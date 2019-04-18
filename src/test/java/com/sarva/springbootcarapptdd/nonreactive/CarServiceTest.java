@@ -9,10 +9,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.sarva.springbootcarapptdd.nonreactive.Car;
-import com.sarva.springbootcarapptdd.nonreactive.CarRepository;
-import com.sarva.springbootcarapptdd.nonreactive.CarService;
-
 @RunWith(MockitoJUnitRunner.class)
 public class CarServiceTest {
 
@@ -22,10 +18,10 @@ public class CarServiceTest {
 	@Test
 	public void shouldReturnCar() {
 		// arrange
-		given(carRepository.findByMake(anyString())).willReturn(new Car("toyota", "corolla", 2015));
+		given(carRepository.findByMake(anyString())).willReturn(new Car("123", "toyota", "corolla", 2015));
 
 		// act
-		CarService service = new CarService(carRepository);
+		CarService service = new CarService(carRepository, null);
 		Car car = service.getCar("toyota");
 
 		// assert
@@ -39,7 +35,7 @@ public class CarServiceTest {
 		given(carRepository.findByMake(anyString())).willReturn(null);
 
 		// act
-		CarService service = new CarService(carRepository);
+		CarService service = new CarService(carRepository, null);
 		Car car = service.getCar("honda");
 
 		// assert

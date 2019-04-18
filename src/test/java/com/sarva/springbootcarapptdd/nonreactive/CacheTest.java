@@ -13,10 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.sarva.springbootcarapptdd.nonreactive.Car;
-import com.sarva.springbootcarapptdd.nonreactive.CarRepository;
-import com.sarva.springbootcarapptdd.nonreactive.CarService;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CacheTest {
@@ -29,7 +25,7 @@ public class CacheTest {
 
 	@Test
 	public void shouldReturnCarFromCache() {
-		given(carRepository.findByMake(anyString())).willReturn(new Car("hyundai", "verna", 2015));
+		given(carRepository.findByMake(anyString())).willReturn(new Car("123", "hyundai", "verna", 2015));
 		carService.getCar("hyundai");
 		carService.getCar("hyundai");
 		verify(carRepository, times(1)).findByMake(anyString());
@@ -37,7 +33,7 @@ public class CacheTest {
 
 	@Test
 	public void shouldNotReturnCarFromCache() {
-		given(carRepository.findByMake(anyString())).willReturn(new Car("toyota", "corolla", 2015));
+		given(carRepository.findByMake(anyString())).willReturn(new Car("123", "toyota", "corolla", 2015));
 		carService.getCar("toyota");
 		carService.getCar("honda");
 		verify(carRepository, times(2)).findByMake(anyString());

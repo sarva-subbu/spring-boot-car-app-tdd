@@ -10,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.sarva.springbootcarapptdd.nonreactive.Car;
-import com.sarva.springbootcarapptdd.nonreactive.CarRepository;
-
 @RunWith(SpringRunner.class)
 @DataMongoTest
 public class CarRepositoryTest {
@@ -23,7 +20,7 @@ public class CarRepositoryTest {
 	@Before
 	public void setUp() {
 		carRepository.deleteAll();
-		carRepository.save(new Car("toyota", "corolla", 2015));
+		carRepository.save(new Car("123", "toyota", "corolla", 2015));
 	}
 
 	@After

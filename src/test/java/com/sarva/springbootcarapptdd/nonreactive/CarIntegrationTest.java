@@ -13,9 +13,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.sarva.springbootcarapptdd.nonreactive.Car;
-import com.sarva.springbootcarapptdd.nonreactive.CarRepository;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CarIntegrationTest {
@@ -29,7 +26,7 @@ public class CarIntegrationTest {
 	@Before
 	public void setUp() {
 		carRepository.deleteAll();
-		carRepository.save(new Car("toyota", "corolla", 2015));
+		carRepository.save(new Car("123", "toyota", "corolla", 2015));
 	}
 
 	@After
